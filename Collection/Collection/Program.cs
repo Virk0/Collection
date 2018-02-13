@@ -78,13 +78,42 @@ namespace Collection
             openWith.Add("bmp", "paint.exe");
             openWith.Add("jpg", "paint.exe");
             openWith.Add("rtf", "wordpad.exe");
+
+            openWith["rtf"] = "winword.exe";
+            try
+            {
+                openWith.Add("txt", "word.exe");
+            }
+            catch (ArgumentException)
+            {
+                Console.WriteLine("An element with key \"txt\" already exist");
+            }
             Console.WriteLine("For key = rtf , value = {0}", openWith["rtf"]);
+            //Console.WriteLine("For key = doc , value = {0}", openWith["doc"]);
 
+            try
+            {
+                Console.WriteLine("For key = tif , value = {0}", openWith["tif"]);
+            }
+            catch (KeyNotFoundException)
+            {
+                Console.WriteLine("Key = \"tif\" not found");
+            }
+            string value = "";
+            if(openWith.TryGetValue("tif", out value))
+            {
+                Console.WriteLine("For key = \"tif\", value = {0}.", value);
+            }
+            else
+            {
+                Console.WriteLine("Key \"tif\" not found");
+            }
 
-
-
-
-
+            if (!openWith.ContainsKey("ht"))
+            {
+                openWith.Add("ht", "hyperterm.exe");
+                Console.WriteLine("Value added for key ht: {0}", openWith["ht"]);
+            }
 
 
 
