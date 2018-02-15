@@ -10,6 +10,7 @@ namespace Collection
     {
         static void Main(string[] args)
         {
+            #region List
             //var cars = new List<string>();
             //var car1 = "BMW";
             //var car2 = "Lada";
@@ -69,56 +70,164 @@ namespace Collection
 
 
             //}
+            #endregion
+            Console.WriteLine("\n" + "\n" + "#####End Of List#####" + "\n" + "\n");
+            #region Dictionary
+            ////Dictionary
+            //var openWith = new Dictionary<string, string>();
+            ////            key    value
+            //openWith.Add("txt", "notepad.exe");
+            //openWith.Add("bmp", "paint.exe");
+            //openWith.Add("jpg", "paint.exe");
+            //openWith.Add("rtf", "wordpad.exe");
+
+            //openWith["rtf"] = "winword.exe";
+            //try
+            //{
+            //    openWith.Add("txt", "word.exe");
+            //}
+            //catch (ArgumentException)
+            //{
+            //    Console.WriteLine("An element with key \"txt\" already exist");
+            //}
+            //Console.WriteLine("For key = rtf , value = {0}", openWith["rtf"]);
+            ////Console.WriteLine("For key = doc , value = {0}", openWith["doc"]);
+
+            //try
+            //{
+            //    Console.WriteLine("For key = tif , value = {0}", openWith["tif"]);
+            //}
+            //catch (KeyNotFoundException)
+            //{
+            //    Console.WriteLine("Key = \"tif\" not found");
+            //}
+            //string value = "";
+            //if(openWith.TryGetValue("tif", out value))
+            //{
+            //    Console.WriteLine("For key = \"tif\", value = {0}.", value);
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Key \"tif\" not found");
+            //}
+
+            //if (!openWith.ContainsKey("ht"))
+            //{
+            //    openWith.Add("ht", "hyperterm.exe");
+            //    Console.WriteLine("Value added for key ht: {0}", openWith["ht"]);
+            //}
+
+            //foreach (KeyValuePair<string, string> kvp in openWith)
+            //{
+            //    Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+            //}
+
+            //Dictionary<string, string>.ValueCollection valueCollection = openWith.Values;
+            //foreach (string item in valueCollection)
+            //{
+            //    Console.WriteLine("Value = {0}", item);
+            //}
+
+            //Dictionary<string, string>.KeyCollection keyCollection = openWith.Keys;
+            //foreach (string item in keyCollection)
+            //{
+            //    Console.WriteLine("Key = {0}", item);
+            //}
+
+            //openWith.Remove("doc");
+            //if (!openWith.ContainsKey("doc"))
+            //{
+            //    Console.WriteLine("Key \"doc\" is not found");
+            //}
+            #endregion
+            Console.WriteLine("\n" + "\n" + "#####End of Dictionary#####" + "\n" + "\n");
+            #region Queue   
+            //Queue<string> numbers = new Queue<string>();
+            //numbers.Enqueue("one");
+            //numbers.Enqueue("two");
+            //numbers.Enqueue("three");
+            //numbers.Enqueue("four");
+            //numbers.Enqueue("five");
+
+            //foreach (string number in numbers)
+            //{
+            //    Console.WriteLine();
+            //    Console.WriteLine(number);
+
+            //}
+
+            //Console.WriteLine();
+            //Console.WriteLine("Dequeueing ' {0} '", numbers.Dequeue());
+            //Console.WriteLine("Peek at next item to dequeue: {0}", numbers.Peek());
+            //Console.WriteLine("Dequeueing ' {0} '", numbers.Dequeue());
+            //Queue<string> queueCopy = new Queue<string>(numbers.ToArray());
+            //Console.WriteLine("Contents of the frist Copy:");
+            //foreach (string number in queueCopy)
+            //{
+            //    Console.WriteLine(number);
+            //}
+
+            //string[] array2 = new string[numbers.Count * 2];
+            //numbers.CopyTo(array2, numbers.Count);
+
+            //Queue<string> queueCopy2 = new Queue<string>(array2);
+            //Console.WriteLine("\n Contents if the second Copy, with duplicates and nulls");
+            //foreach (string number in queueCopy2)
+            //{
+            //    Console.WriteLine(number);
+            //}
+
+            //Console.WriteLine("\nqueueCopy contains 'four' = {0}", queueCopy.Contains("four"));
+
+            //queueCopy.Clear();
+            //Console.WriteLine("\nqueueCopy count is: {0} ", queueCopy.Count);
 
 
-            //Dictionary
-            var openWith = new Dictionary<string, string>();
-            //            key    value
-            openWith.Add("txt", "notepad.exe");
-            openWith.Add("bmp", "paint.exe");
-            openWith.Add("jpg", "paint.exe");
-            openWith.Add("rtf", "wordpad.exe");
 
-            openWith["rtf"] = "winword.exe";
-            try
+
+            #endregion
+            Console.WriteLine("\n" + "\n" + "#####End of Queue#####" + "\n" + "\n");
+            #region Stack - Last in first out
+
+            //Stack<string> numbersSt = new Stack<string>();
+            //numbersSt.Push("one");
+            //numbersSt.Push("two");
+            //numbersSt.Push("three");
+            //numbersSt.Push("four");
+            //numbersSt.Push("five");
+
+            //foreach (string number in numbersSt)
+            //{
+            //    Console.WriteLine(number);
+            //}
+
+            //Console.WriteLine("\nPopping '{0}'", numbersSt.Pop());
+            //Console.WriteLine("Peek at next item to destack: {0}", numbersSt.Peek());
+            //Console.WriteLine("\nPopping '{0}'", numbersSt.Pop());
+
+
+
+
+
+
+
+
+
+
+            #endregion
+            Console.WriteLine("\n" + "\n" + "#####End of Stack#####" + "\n" + "\n");
+            #region LINQ
+            int[] numbers = new int[7] { 0, 1, 2, 3, 4, 5, 6 };
+
+            var NumQuery = from num in numbers
+                           where (num % 2) == 0
+                           select num;
+
+            foreach (int num in NumQuery)
             {
-                openWith.Add("txt", "word.exe");
+                Console.WriteLine("{0,1} ", num);
             }
-            catch (ArgumentException)
-            {
-                Console.WriteLine("An element with key \"txt\" already exist");
-            }
-            Console.WriteLine("For key = rtf , value = {0}", openWith["rtf"]);
-            //Console.WriteLine("For key = doc , value = {0}", openWith["doc"]);
-
-            try
-            {
-                Console.WriteLine("For key = tif , value = {0}", openWith["tif"]);
-            }
-            catch (KeyNotFoundException)
-            {
-                Console.WriteLine("Key = \"tif\" not found");
-            }
-            string value = "";
-            if(openWith.TryGetValue("tif", out value))
-            {
-                Console.WriteLine("For key = \"tif\", value = {0}.", value);
-            }
-            else
-            {
-                Console.WriteLine("Key \"tif\" not found");
-            }
-
-            if (!openWith.ContainsKey("ht"))
-            {
-                openWith.Add("ht", "hyperterm.exe");
-                Console.WriteLine("Value added for key ht: {0}", openWith["ht"]);
-            }
-
-
-
-
-
+                           #endregion
             Console.ReadLine();
         }
     }
