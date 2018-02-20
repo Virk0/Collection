@@ -45,6 +45,18 @@ namespace Collection
             //    new Human(){Name = "Juku",Age = 20}
             //};
 
+
+            //var query = (from element in humans1
+            //             orderby element.Age ascending
+            //             where element.Age > 20 
+            //             select element).ToList();
+
+            //foreach (var item in query)
+            //{
+            //    Console.WriteLine(item.Name + " " + item.Age );
+            //}
+
+           
             //var human1 = new Human();
             //human1.Name = "Priit";
             //human1.Age = 25;
@@ -217,17 +229,122 @@ namespace Collection
             #endregion
             Console.WriteLine("\n" + "\n" + "#####End of Stack#####" + "\n" + "\n");
             #region LINQ
-            int[] numbers = new int[7] { 0, 1, 2, 3, 4, 5, 6 };
+            //int[] numbers = new int[7] { 0, 1, 2, 3, 4, 5, 6 };
 
-            var NumQuery = from num in numbers
-                           where (num % 2) == 0
-                           select num;
+            //var NumQuery = from num in numbers
+            //               where (num % 2) == 0
+            //               select num;
 
-            foreach (int num in NumQuery)
+            //foreach (int num in NumQuery)
+            //{
+            //    Console.WriteLine("{0,1} ", num);
+            //}
+            #endregion
+
+
+
+            //int[] numbers = new int[7] { 0, 1, 2, 3, 4, 5, 6 };
+            ////var a = numbers.Contains(7);
+
+            ////var b = false;
+            ////foreach (var item in numbers)
+            ////{
+            ////    if (item == 6)
+            ////        b = true;
+            ////}
+            ////Console.WriteLine(a);
+            ////Console.WriteLine(b);
+
+            //var a = numbers.ElementAtOrDefault(15);
+            //var b = numbers.FirstOrDefault();
+            //var c = numbers.Take(3).ToList();
+            //var d = numbers.Average();
+            //var e = numbers.Max();
+            //var f = numbers.Min();
+            //Console.WriteLine("ElementAtOrDefault " + a);
+            //Console.WriteLine("FirstOrDefault " + b);
+            //foreach (var item in c)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            //Console.WriteLine("Take " + d);
+            //Console.WriteLine("Max " + e);
+            //Console.WriteLine("Min " + f);
+
+            //var humans1 = new List<Human>
+            //{
+            //    new Human(){Name = "Kalle",Age = 20},
+            //    new Human(){Name = "Malle",Age = 25},
+            //    new Human(){Name = "Mari",Age = 40},
+            //    new Human(){Name = "Elmar",Age = 20},
+            //    new Human(){Name = "Juku",Age = 20}
+            //};
+
+            //var g = humans1.Where(x => x.Name == "Kalle").FirstOrDefault().Name;
+            //Console.WriteLine(g);
+            //var i = humans1.Where(x => x.Name.Contains("a")).ToList();
+            //var h = humans1.Where(x => x.Age == 40).ToList();
+            //var j = humans1.Where(x => x.Name.StartsWith("M")).ToList();
+
+            //foreach (var item in h)
+            //{
+            //    Console.WriteLine(item.Name + " " + item.Age);
+            //}
+            //foreach (var item in i)
+            //{
+            //    Console.WriteLine(item.Name + " " + item.Age);
+            //}
+            //foreach (var item in j)
+            //{
+            //    Console.WriteLine(item.Name + " " + item.Age);
+            //}
+
+            var cars1 = new List<Car>
             {
-                Console.WriteLine("{0,1} ", num);
+                new Car(){Maker = "Audi",Model = "A8",KW = 128, Color = "Red"},
+                new Car(){Maker = "Audi",Model = "R8",KW = 309, Color = "Blue"},
+                new Car(){Maker = "BMW",Model = "m3",KW = 309, Color = "Purple"},
+                new Car(){Maker = "Lamborghini",Model = "Huracan 580-2",KW = 426, Color = "White"},
+                new Car(){Maker = "Lada",Model = "Vaz 21013",KW = 49, Color = "Orange"},
+                new Car(){Maker = "Opel",Model = "Astra",KW = 66, Color = "White"},
+                new Car(){Maker = "Renault",Model = "Megane",KW = 70, Color = "Red"},
+                new Car(){Maker = "Volvo",Model = "V70",KW = 106, Color = "Blue"},
+                new Car(){Maker = "Mazda",Model = "323",KW = 72, Color = "White"},
+                new Car(){Maker = "BMW",Model = "M760",KW = 448, Color = "Black"},
+            };
+            Console.WriteLine("\n");
+            Console.WriteLine("Cars sorted by \"KW\" \n");
+            var query = (from element in cars1
+                         orderby element.KW ascending
+                         select element).ToList();
+            foreach (var item in query)
+            {
+                Console.WriteLine(item.Maker+ " " + item.Model + " " + item.KW + " KW");
             }
-                           #endregion
+            Console.WriteLine("\n");
+            Console.WriteLine("Makers that contain \"o\" in their name \n");
+            var oopa = cars1.Where(x => x.Maker.Contains("o")).ToList();
+            foreach (var item in oopa)
+            {
+                Console.WriteLine(item.Maker + " ");
+            }
+            Console.WriteLine("\n");
+            Console.WriteLine("Makers that contain \"e\" in their name \n");
+            var e = cars1.Where(x => x.Maker.Contains("e")).ToList();
+            foreach (var item in e)
+            {
+                Console.WriteLine(item.Maker + " ");
+            }
+            Console.WriteLine("\n");
+            Console.WriteLine("Models that consist of more than 4 letters\n");
+            var query4ltr = (from element in cars1
+                             where element.Model.Length > 4
+                             select element).ToList();
+            foreach (var item in query4ltr)
+            {
+                Console.WriteLine(item.Model);
+            }
+            var Max = cars1.KW.Max
             Console.ReadLine();
         }
     }
