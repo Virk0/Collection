@@ -299,52 +299,88 @@ namespace Collection
             //    Console.WriteLine(item.Name + " " + item.Age);
             //}
 
-            var cars1 = new List<Car>
+            //var cars1 = new List<Car>
+            //{
+            //    new Car(){Maker = "Audi",Model = "A8",KW = 128, Color = "Red"},
+            //    new Car(){Maker = "Audi",Model = "R8",KW = 309, Color = "Blue"},
+            //    new Car(){Maker = "BMW",Model = "m3",KW = 309, Color = "Purple"},
+            //    new Car(){Maker = "Lamborghini",Model = "Huracan 580-2",KW = 426, Color = "White"},
+            //    new Car(){Maker = "Lada",Model = "Vaz 21013",KW = 49, Color = "Orange"},
+            //    new Car(){Maker = "Opel",Model = "Astra",KW = 66, Color = "White"},
+            //    new Car(){Maker = "Renault",Model = "Megane",KW = 70, Color = "Red"},
+            //    new Car(){Maker = "Volvo",Model = "V70",KW = 106, Color = "Blue"},
+            //    new Car(){Maker = "Mazda",Model = "323",KW = 72, Color = "White"},
+            //    new Car(){Maker = "BMW",Model = "M760",KW = 448, Color = "Black"},
+            //};
+            //Console.WriteLine("\n");
+            //Console.WriteLine("Cars sorted by \"KW\" \n");
+            //var query = (from element in cars1
+            //             orderby element.KW ascending
+            //             select element).ToList();
+            //foreach (var item in query)
+            //{
+            //    Console.WriteLine(item.Maker+ " " + item.Model + " " + item.KW + " KW");
+            //}
+            //Console.WriteLine("\n");
+            //Console.WriteLine("Makers that contain \"o\" in their name \n");
+            //var oopa = cars1.Where(x => x.Maker.Contains("o")).ToList();
+            //foreach (var item in oopa)
+            //{
+            //    Console.WriteLine(item.Maker + " ");
+            //}
+            //Console.WriteLine("\n");
+            //Console.WriteLine("Makers that contain \"e\" in their name \n");
+            //var e = cars1.Where(x => x.Maker.Contains("e")).ToList();
+            //foreach (var item in e)
+            //{
+            //    Console.WriteLine(item.Maker + " ");
+            //}
+            //Console.WriteLine("\n");
+            //Console.WriteLine("Models that consist of more than 4 letters\n");
+            //var query4ltr = (from element in cars1
+            //                 where element.Model.Length > 4
+            //                 select element).ToList();
+            //foreach (var item in query4ltr)
+            //{
+            //    Console.WriteLine(item.Model);
+            //}
+            //var Max = cars1.KW.Max
+            string[] names = System.IO.File.ReadAllLines("../../names.txt");
+            var humans1 = new List<Human>();
+            foreach (string item in names)
             {
-                new Car(){Maker = "Audi",Model = "A8",KW = 128, Color = "Red"},
-                new Car(){Maker = "Audi",Model = "R8",KW = 309, Color = "Blue"},
-                new Car(){Maker = "BMW",Model = "m3",KW = 309, Color = "Purple"},
-                new Car(){Maker = "Lamborghini",Model = "Huracan 580-2",KW = 426, Color = "White"},
-                new Car(){Maker = "Lada",Model = "Vaz 21013",KW = 49, Color = "Orange"},
-                new Car(){Maker = "Opel",Model = "Astra",KW = 66, Color = "White"},
-                new Car(){Maker = "Renault",Model = "Megane",KW = 70, Color = "Red"},
-                new Car(){Maker = "Volvo",Model = "V70",KW = 106, Color = "Blue"},
-                new Car(){Maker = "Mazda",Model = "323",KW = 72, Color = "White"},
-                new Car(){Maker = "BMW",Model = "M760",KW = 448, Color = "Black"},
-            };
-            Console.WriteLine("\n");
-            Console.WriteLine("Cars sorted by \"KW\" \n");
-            var query = (from element in cars1
-                         orderby element.KW ascending
+                Human human = new Human();
+
+                human.Name = item;
+
+                humans1.Add(human);
+            }
+                //var humans1 = new List<Human>
+                //{
+                //    new Human(){Name = "Kalle",Age = 20},
+                //    new Human(){Name = "Malllle",Age = 25},
+                //    new Human(){Name = "Marianna",Age = 40},
+                //    new Human(){Name = "Elmari",Age = 20},
+                //    new Human(){Name = "Juku",Age = 20}
+                //};
+
+            Console.WriteLine("Humans sorted by name lenght \n");
+            var query = (from element in humans1
+                         orderby element.Name.Length ascending
                          select element).ToList();
             foreach (var item in query)
             {
-                Console.WriteLine(item.Maker+ " " + item.Model + " " + item.KW + " KW");
+                Console.WriteLine(item.Name);
             }
-            Console.WriteLine("\n");
-            Console.WriteLine("Makers that contain \"o\" in their name \n");
-            var oopa = cars1.Where(x => x.Maker.Contains("o")).ToList();
-            foreach (var item in oopa)
+
+            var a = humans1.OrderByDescending(w => w.Name.Length).ToList();
+            for (int i = 0; i < a.Count(); i++)
             {
-                Console.WriteLine(item.Maker + " ");
+                if (a.ElementAt(i).Name.Length != 0)
+                {
+                    Console.WriteLine(a.ElementAt(i).Name.Length + ": " + a.ElementAt(i));
+                }
             }
-            Console.WriteLine("\n");
-            Console.WriteLine("Makers that contain \"e\" in their name \n");
-            var e = cars1.Where(x => x.Maker.Contains("e")).ToList();
-            foreach (var item in e)
-            {
-                Console.WriteLine(item.Maker + " ");
-            }
-            Console.WriteLine("\n");
-            Console.WriteLine("Models that consist of more than 4 letters\n");
-            var query4ltr = (from element in cars1
-                             where element.Model.Length > 4
-                             select element).ToList();
-            foreach (var item in query4ltr)
-            {
-                Console.WriteLine(item.Model);
-            }
-            var Max = cars1.KW.Max
             Console.ReadLine();
         }
     }
